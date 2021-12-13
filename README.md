@@ -1,6 +1,12 @@
 # Recipe API
 You can directly boot this spring boot application. Main starter is RecipeAPIApplication.java. This API application assumes that there are only two users: userA and userB and their passwords passA and passB respectively. Initial User data is loaded within booting phase. You can check it from LoadDatabase.java
 
+H2 was chosen for fast development. There are USER, RECIPE and INGREDIENTS tables. In RECIPE table, there is USER_ID column to keep relation with USER table. Column has foreign key index. This relation is provided by JPA OneToMany relation in User.java entity.
+
+Another relation is between RECIPE and INGREDIENTS tables. Ingredients list in Recipe entity is persisted with JPA @ElementCollection annotation in Recipe.java entity.
+
+Spring-security was chosen to secure API requests. Swagger v2 was chosen API documentation and tests. JUnit tests are written for automation. ModelMapper was chosen to map DTO objects to DB entities and vice-versa.
+
 There is also a Dockerfile to run the application in a container in the project folder.
 
 ## JUnit Tests
