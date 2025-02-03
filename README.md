@@ -1,28 +1,44 @@
 # Recipe API
-You can directly boot this spring boot application. Main starter is RecipeAPIApplication.java. This API application assumes that there are only two users: userA and userB and their passwords passA and passB respectively. Initial User data is loaded within booting phase. You can check it from LoadDatabase.java
 
-H2 was chosen for fast development. There are USER, RECIPE and INGREDIENTS tables. In RECIPE table, there is USER_ID column to keep relation with USER table. Column has foreign key index. This relation is provided by JPA OneToMany relation in User.java entity.
+You can directly boot this spring boot application. Main starter is RecipeAPIApplication.java. This API application
+assumes that there are only two users: userA and userB and their passwords passA and passB respectively. Initial User
+data is loaded within booting phase. You can check it from LoadDatabase.java
 
-Another relation is between RECIPE and INGREDIENTS tables. Ingredients list in Recipe entity is persisted with JPA @ElementCollection annotation in Recipe.java entity.
+H2 was chosen for fast development. There are USER, RECIPE and INGREDIENTS tables. In RECIPE table, there is USER_ID
+column to keep relation with USER table. Column has foreign key index. This relation is provided by JPA OneToMany
+relation in User.java entity.
 
-Spring-security was chosen to secure API requests. Swagger v2 was chosen API documentation and tests. JUnit tests are written for automation. ModelMapper was chosen to map DTO objects to DB entities and vice-versa.
+Another relation is between RECIPE and INGREDIENTS tables. Ingredients list in Recipe entity is persisted with JPA
+@ElementCollection annotation in Recipe.java entity.
+
+Spring-security was chosen to secure API requests. Swagger v2 was chosen API documentation and tests. JUnit tests are
+written for automation. ModelMapper was chosen to map DTO objects to DB entities and vice versa.
 
 There is also a Dockerfile to run the application in a container in the project folder.
 
 ## JUnit Tests
-There are two test classes: ValidationTests.java and HappyPathTests.java. GivenWhenThen Style Test scenarios are coded in those classes. Please check GivenWhenThen Style Test section below. Scenarios 1-6 are in ValidationTests and 7-11 are in HappyPathTests. You can directly run both java classses as JUnit test starter. Spring MockMvcs in those classes boots the application and runs test scenarios.
+
+There are two test classes: ValidationTests.java and HappyPathTests.java. GivenWhenThen Style Test scenarios are coded
+in those classes. Please check GivenWhenThen Style Test section below. Scenarios 1-6 are in ValidationTests and 7-11 are
+in HappyPathTests. You can directly run both java classes as JUnit test starter. Spring MockMvcs in those classes boots
+the application and runs test scenarios.
 
 ## Swagger API Documentation
-After spring boot application started, API documentation and example test values can be accessible from the link below. You can run manual tests and checks if you want.
 
-You should provide authentication info for userA or userB by clicking lock icon before sending requests. Otherwise, you will get 401 Unauthorized response.
+After spring boot application started, API documentation and example test values can be accessible from the link below.
+You can run manual tests and checks if you want.
+
+You should provide authentication info for userA or userB by clicking lock icon before sending requests. Otherwise, you
+will get 401 Unauthorized response.
 
 ```
 http://localhost:8080/swagger-ui/index.html#
 ```
 
 ## H2 Console
-After spring boot application started, H2 console can be accessible and in-memory data can be observed from the link below:
+
+After spring boot application started, H2 console can be accessible and in-memory data can be observed from the link
+below:
 
 console user: sa
 
